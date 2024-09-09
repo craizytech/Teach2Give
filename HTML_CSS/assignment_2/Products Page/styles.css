@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+
+}
+
+.left img {
+    height: 50px;
+    width: 50px;
+}
+
+.center {
+    display: flex;
+    gap: 20px;
+}
+
+.right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.right select {
+    border: none;
+    background-color: #f8f9fa;
+}
+
+.right .cart{
+    display: flex;
+    gap: 10px;
+}
+
+.right img {
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
+}
+
+.right .cart img {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+}
+
+.right .cart p {
+    font-size:larger;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px;
+    
+}
+
+.account {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #f7fafc;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.top {
+    display: flex;
+    gap: 3px;
+}
+
+.top img {
+    height: 20px;
+    width: 20px;
+}
+
+.account-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.account-details input {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: lightgray;
+
+}
+
+.account-details .login {
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-details .login button {
+    width: fit-content;
+    color: #f7fafc;
+    background-color: #3182ce;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.confirm-order {
+    display: flex;
+    gap: 10px;
+}
+
+.confirm-order button {
+    width: fit-content;
+    background-color: #3182ce;
+    color: #f7fafc;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f7fafc;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.order #sony {
+    width: 400px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.price-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-details .price {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.price-details .count {
+    display: flex;
+    gap: 10px;
+}
+
+.price-details .count img {
+    height: 20px;
+    width: 20px;
+}
+
+.count .sign {
+    width: 40px;
+    height: 40px;
+}
+
+.order .discount {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order .discount input {
+    background-color: lightgray;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.order .discount button {
+    padding: 10px;
+    border-radius: 5px;
+    border-color: #3182ce;
+    
+}
+
+
+.order p {
+    font-size: 15px;
+}
+
+.order .prices {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.order .prices .item {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    justify-content: center;
+    align-items: center;
+    color: hsl(210, 46%, 95%);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 5px;
+    margin: 5px;
+}
+
+p {
+    font-size: 15px;
+}
+
+.left {
+    display: grid;
+}
+
+.right {
+    background-color: white;
+    color: black;
+}
+
+.left-row-1 {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    margin: 10px;
+}
+
+.left-row-2 {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin: 10px;
+}
+
+.left-row1-column1 {
+    margin: 5px;
+    row-gap: 2px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.left-row1-column2 {
+    margin: 5px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.left-row2-column1 {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.left-row2-column2 {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    align-items: center;
+}
+
+.header img {
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+}
+
+.header .user-info {
+    display: grid;
+    grid-template-rows: 30px;
+}
+
+.header .user-info h4 {
+    margin-top: 5px;
+}
+
+
+.verified {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.verified p {
+    font-size: 13px;
+}
+
+#daniel {
+    background-color: hsl(263, 55%, 52%);
+    background-image: url(./static/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: right 10% top 0;
+    color:white;
+
+}
+
+#jonathan {
+    background-color: hsl(217, 19%, 35%);
+    color: white;
+}
+
+#harmon {
+    background-color: white;
+    color: black;
+}
+
+#patrick {
+    background-color: hsl(219, 29%, 14%);
+    color: whitesmoke;
+}
+
+
+

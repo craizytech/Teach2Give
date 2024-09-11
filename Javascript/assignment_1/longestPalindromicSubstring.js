@@ -1,16 +1,38 @@
-import isPalindrome from "./check_palindrome"
+function isPalindrome(string) {
+    
+    string = string.replace(/[^\w]|_/g, '').toLowerCase();
+
+    let reversedString = string.split('').reverse().join('');
+
+    return reversedString == string;
+}
 
 function longestPalindrome(string) {
-    start = 0;
-    end = start + 1;
+    let start = 0;
+    let end = start + 1;
     
-    palindromes = [];
+    let palindromes = [];
     
-    while (start < String.length) {
-        while (end < string.length) {
-            if (isPalindrome(string.substring(start, end))) {
-                palindromes.push(string)
+    while (start < string.length) {
+        while (end <= string.length) {
+            // get substring from start to the end
+            let substring = string.substring(start, end);
+
+            if (isPalindrome(substring)) {
+                palindromes.push(substring);
             }
+
+            end++;
         }
+        start++;
+        end = start + 1;
     }
+
+    let longest = palindromes.sort((a, b) => b.length - a.length)[0] || '';
+
+    return longest;
 }
+
+// Test Cases
+console.log(longestPalindrome('babad'));
+console.log(longestPalindrome('cbbd'));

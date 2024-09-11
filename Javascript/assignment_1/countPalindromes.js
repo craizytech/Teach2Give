@@ -7,7 +7,7 @@ function isPalindrome(string) {
     return reversedString == string;
 }
 
-function longestPalindrome(string) {
+function countPalindromes(string) {
     let start = 0;
     let end = start + 1;
     
@@ -27,12 +27,9 @@ function longestPalindrome(string) {
         start++;
         end = start + 1;
     }
-
-    let longest = palindromes.sort((a, b) => b.length - a.length)[0] || '';
-
-    return longest;
+    console.log(palindromes)
+    return palindromes.length;
 }
 
-// Test Cases
-console.log(longestPalindrome('babad'));
-console.log(longestPalindrome('cbbd'));
+
+console.log(countPalindromes('ababa'));

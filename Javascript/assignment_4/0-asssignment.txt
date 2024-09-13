@@ -5,18 +5,24 @@ name : "David Rayy",
 sclass : "VI",
 rollno : 12 };
 Sample Output: name,sclass,rollno
+
+
 2. Write a JavaScript program to delete the rollno property from the following object. Also print the object before or after deleting the property.
 Sample object:
 var student = {
 name : "David Rayy",
 sclass : "VI",
 rollno : 12 };
+
+
 3. Write a JavaScript program to get the length of a JavaScript object.
 Sample object :
 var student = {
 name : "David Rayy",
 sclass : "VI",
 rollno : 12 };
+
+
 4. Write a JavaScript program to display the reading status (i.e. display book name, author name and reading status) of the following books.
 var library = [ 
    {
@@ -39,6 +45,8 @@ var library = [
 7. Write a JavaScript program that returns a subset of a string.
 Sample Data: dog
 Expected Output: ["d", "do", "dog", "o", "og", "g"]
+
+
 10. Write a JavaScript program to sort an array of JavaScript objects.
 Sample Object :
 var library = [ 
@@ -71,13 +79,26 @@ Expected Output:[[object Object] {
   title: "Bill Gates"
 }]
  
+
 11. Write a JavaScript function to print all the methods in a JavaScript object.
 Test Data :
 console.log(all_properties(Array));
 ["length", "name", "arguments", "caller", "prototype", "isArray", "observe", "unobserve"]
+
+
 12. Write a JavaScript function to parse an URL.
+
+
 13. Write a JavaScript function to retrieve all the names of an object's own and inherited properties.
+
+
 14. Write a JavaScript function to retrieve all the values of an object's properties.
+
+
 15. Write a JavaScript function to convert an object into a list of `[key, value]` pairs.
+
+
 16. Write a JavaScript function to get a copy of the object where the keys become the values and the values are the keys.
+
+
 17. Write a JavaScript function to check whether an object contains a given property.

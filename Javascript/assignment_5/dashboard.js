@@ -112,3 +112,45 @@ const users = [
   ];
 
   
+  function analyzeSocialMediaData(users) {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+    
+    // Filter active users who have posted in the last 7 days
+    const activeUsers = users.filter(user => 
+      user.posts.some(post => new Date(post.timestamp) > oneWeekAgo)
+    );
+  
+    // Extract popular posts (likes >= 10) for active users
+    const activeUsersWithPopularPosts = activeUsers.map(user => {
+      const popularPosts = user.posts.filter(post => 
+        new Date(post.timestamp) > oneWeekAgo && post.likes >= 10
+      );
+      return { ...user, popularPosts };
+    }).filter(user => user.popularPosts.length > 0); // Only keep users with popular posts
+  
+    // Calculate total likes and popular post count
+    const { totalLikes, totalPosts } = activeUsersWithPopularPosts.reduce(
+      (acc, user) => {
+        const userLikes = user.popularPosts.reduce((sum, post) => sum + post.likes, 0);
+        acc.totalLikes += userLikes;
+        acc.totalPosts += user.popularPosts.length;
+        return acc;
+      },
+      { totalLikes: 0, totalPosts: 0 }
+    );
+  
+    // Calculate average likes per active user
+    const averageLikesPerUser = activeUsersWithPopularPosts.length > 0 
+      ? totalLikes / activeUsersWithPopularPosts.length 
+      : 0;
+  
+    return {
+      numberOfActiveUsers: activeUsersWithPopularPosts.length,
+      totalPopularPosts: totalPosts,
+      averageLikesPerUser: averageLikesPerUser
+    };
+  }
+
+  
+  console.log(analyzeSocialMediaData(users));

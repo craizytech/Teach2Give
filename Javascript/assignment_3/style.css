@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: aliceblue;
+    gap: 10px;
+}
+
+#products {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+    gap: 20px;
+}
+
+#products div {
+    background-color: lightgrey;
+    padding: 10px;
+    border-radius: 10px;
+}

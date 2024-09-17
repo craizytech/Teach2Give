@@ -17,7 +17,7 @@ function extractProperties(objects, ...properties) {
         });
 
         return newObj;
-    });
+    })
 }
 
 // Test Case

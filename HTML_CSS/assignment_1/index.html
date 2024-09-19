@@ -1,64 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | QR code component</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-  body{
-    background-color:hsl(212, 45%, 89%);
-    font-family: Outfit;
-  } 
+    <title>Frontend Mentor | QR code component</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <img src="./images/image-qr-code.png" alt="qr image" />
 
-  .qr-code-image{
-    width: 190px;
-    display: block;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
+      <div class="text">
+        <span>Improve your front-end skills by building projects</span>
 
-  .div-1{
-    display: flex;
-    flex-direction: column;
-    max-width: 190px;
-    padding: 10px;
-    margin: auto;
-    border-radius: 12px;
-    background-color: white;
-    position: fixed;
-    inset: 0px;
-    height: fit-content;
-  }
-
-  .para-1{
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 10px;
-    color: hsl(218, 44%, 22%);
-  }
-
-  .para-2{
-    text-align: center;
-    margin-bottom: 16px;
-    font-size: 11px;
-    color: hsl(220, 15%, 55%);
-  }
-  </style>
-</head>
-<body>
-  <div class="div-1">
-    <img alt="qr-code-that-takes-you-to-frontend-mentor-homepage" class ="qr-code-image" src="images/image-qr-code.png">
-    <div class="para-1">
-      Improve your front-end skills by building projects
-    </div> 
-    <div class="para-2">
-      Scan the QR code to visit Frontend Mentor and take your coding skills to the next level
+        <p>
+          Scan the QR code to visit Frontend Mentor and take your coding skills
+          to the next level
+        </p>
+      </div>
     </div>
-  </div>
-</body>
+
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Eammon Kiprotich</a>
+    </div> -->
+  </body>
 </html>

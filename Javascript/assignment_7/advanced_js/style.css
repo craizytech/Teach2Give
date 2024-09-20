@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    margin: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.container div {
+    /* width: 300px; */
+    border: 1px solid green;
+}
+
+img {
+    height: 200px;
+    width: 100%;
+}

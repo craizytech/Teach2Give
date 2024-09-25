@@ -84,7 +84,7 @@ data = [
         "id": 10,
         "imageUrl": "https://images.unsplash.com/photo-1465310477141-6fb93167a273?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
         "title": "Sports and Adventure Expo",
-        "price": 20,
+        "price": 21,
         "date": "May 20-22, 2022",
         "location": "McCormick Place, Chicago",
         "company": "Google"
@@ -96,6 +96,7 @@ const sortPriceBtn = document.getElementById("sortPrice")
 const sortTitleBtn = document.getElementById("sortTitle")
 const filterLocation = document.getElementById("filterLocation")
 const filterDate = document.getElementById("filterDate")
+const totalRevBtn = document.getElementById("totalRevenue");
 
 
 //function to render data to the dom
@@ -157,9 +158,17 @@ const populateLocationDropdown = () => {
     });
 };
 
+// calculate total revenue
+const total_Revenue = () => {
+    return data.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.price;
+    }, 0);
+};
+
 // Event listners for each button
 sortPriceBtn.addEventListener("click", sortByPrice);
 sortTitleBtn.addEventListener("click", sortByTitle);
+totalRevBtn.addEventListener("click", () => alert(total_Revenue()));
 filterDate.addEventListener("change", (e)=> {
     const selectedYear = e.target.value;
     filterByYear(selectedYear);

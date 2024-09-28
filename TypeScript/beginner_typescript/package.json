@@ -1,0 +1,23 @@
+{
+  "name": "beginner_typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "vitest": "latest",
+    "@total-typescript/exercise-cli": "latest",
+    "@total-typescript/helpers": "latest",
+    "cross-fetch": "latest",
+    "nodemon": "latest",
+    "npm-run-all": "latest",
+    "prettier": "latest",
+    "typescript": "latest",
+    "vite-tsconfig-paths": "latest"
+  }
+}

@@ -22,7 +22,25 @@ body {
 }
 
 #products div {
+    display: flex;
+    flex-direction: column;
     background-color: lightgrey;
     padding: 10px;
     border-radius: 10px;
+}
+
+#products div .buttonsDiv {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#products div .buttonsDiv button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: blue;
+    cursor: pointer;
 }

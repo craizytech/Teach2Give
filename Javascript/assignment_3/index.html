@@ -5,33 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch Data from JSON Servers</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
     <h1>Products</h1>
     <div id="products"></div>
-
-    <script>
-        //Fetch data from JSON server
-        fetch('http://localhost:3000/products')
-        .then(response => response.json()) //parse json response
-        .then(data => {
-            const products = document.getElementById('products');
-
-            // loop through the data and display each user
-            data.forEach(product => {
-                const productDiv = document.createElement('div');
-                productDiv.classname = 'product';
-                productDiv.innerHTML = `
-                <strong>Name: ${product.name} </strong>
-                <p>Description: ${product.description}</p>
-                <p>Price: ${product.price} </p>
-                <p>Category: ${product.category}</p>
-                <p>Stock: ${product.stock}</p>
-                `
-                products.appendChild(productDiv);
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-    </script>
 </body>
 </html>

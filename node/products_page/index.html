@@ -3,28 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Manager</title>
+    <title>Products Management</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Product List</h1>
-    <button onclick="openAddForm()">Add Product</button>
-    <div id="product-list"></div>
+    <div class="container">
+        <header>
+            <h1>Products Management</h1>
+            <button id="addProductBtn" class="btn-primary">Add New Product</button>
+        </header>
 
-    <!-- Popup form for Add/Edit/View -->
-    <div id="popup-form" class="popup">
-        <div class="popup-content">
-            <h2 id="popup-title"></h2>
-            <label>Name: <input type="text" id="name" /></label><br>
-            <label>Description: <input type="text" id="description" /></label><br>
-            <label>Price: <input type="number" id="price" /></label><br>
-            <label>Category: <input type="text" id="category" /></label><br>
-            <label>Stock: <input type="number" id="stock" /></label><br>
-            <button id="save-btn">Save</button>
-            <button onclick="closeForm()">Close</button>
+        <div id="products" class="products-grid"></div>
+
+        <!-- Add/Edit Product Modal -->
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Add New Product</h2>
+                <form id="productForm">
+                    <input type="hidden" id="productId">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category:</label>
+                        <input type="text" id="category" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Stock:</label>
+                        <input type="number" id="stock" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Save Product</button>
+                </form>
+            </div>
         </div>
-    </div>
 
+        <!-- View Product Modal -->
+        <div id="viewModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Product Details</h2>
+                <div id="productDetails"></div>
+            </div>
+        </div>
+
+        <!-- Toast for notifications -->
+        <div id="toast" class="toast"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

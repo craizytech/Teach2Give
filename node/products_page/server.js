@@ -1,101 +1,99 @@
 const http = require('http');
 const fs = require('fs');
-const url = require('url');
 
-// Helper function to read db.json
-function getProducts() {
-    const data = fs.readFileSync('db.json');
-    return JSON.parse(data).products;
-}
-
-// Helper function to write to db.json
-function saveProducts(products) {
-    const data = JSON.stringify({ products }, null, 2);
-    fs.writeFileSync('db.json', data);
-}
-
-// Create HTTP server
 const server = http.createServer((req, res) => {
-    const parsedUrl = url.parse(req.url, true);
-    const method = req.method;
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     
-    // Serve the HTML file on root route
-    if (parsedUrl.pathname === '/' && method === 'GET') {
-        fs.readFile('./index.html', (err, data) => {
-            if (err) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Server Error');
-                return;
+    // Handle OPTIONS request for CORS preflight
+    if (req.method === 'OPTIONS') {
+        res.writeHead(200);
+        res.end();
+        return;
+    }
+
+    // Helper function to read request body
+    const readBody = () => {
+        return new Promise((resolve, reject) => {
+            let body = '';
+            req.on('data', chunk => body += chunk.toString());
+            req.on('end', () => resolve(body));
+            req.on('error', reject);
+        });
+    };
+
+    // Route handler
+    const handleRequest = async () => {
+        try {
+            if (req.url === '/products' && req.method === 'GET') {
+                const jsonData = fs.readFileSync('./db.json', 'utf-8');
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(jsonData);
+            } 
+            else if (req.url === '/add_product' && req.method === 'POST') {
+                const body = await readBody();
+                const jsonData = JSON.parse(fs.readFileSync('./db.json', 'utf-8'));
+                const newProduct = JSON.parse(body);
+                jsonData.push(newProduct);
+                fs.writeFileSync('./db.json', JSON.stringify(jsonData, null, 2));
+                res.writeHead(201, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ message: 'Product added successfully' }));
             }
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(data);
-        });
-    }
-
-    // Serve the CSS file
-    else if (parsedUrl.pathname === '/style.css' && method === 'GET') {
-        fs.readFile('./style.css', (err, data) => {
-            if (err) {
-                res.writeHead(500, { 'Content-Type': 'text/plain' });
-                res.end('Server Error');
-                return;
+            else if (req.url === '/update_product' && req.method === 'PUT') {
+                const body = await readBody();
+                const jsonData = JSON.parse(fs.readFileSync('./db.json', 'utf-8'));
+                const updatedProduct = JSON.parse(body);
+                
+                const index = jsonData.findIndex(item => item.id === updatedProduct.id);
+                if (index === -1) {
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ message: 'Product not found' }));
+                    return;
+                }
+                
+                jsonData[index] = updatedProduct;
+                fs.writeFileSync('./db.json', JSON.stringify(jsonData, null, 2));
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ message: 'Product updated successfully' }));
             }
-            res.writeHead(200, { 'Content-Type': 'text/css' });
-            res.end(data);
-        });
-    }
+            else if (req.url === '/delete_product' && req.method === 'DELETE') {
+                const body = await readBody();
+                const jsonData = JSON.parse(fs.readFileSync('./db.json', 'utf-8'));
+                const { id } = JSON.parse(body);
+                
+                const index = jsonData.findIndex(item => item.id === id);
+                if (index === -1) {
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ message: 'Product not found' }));
+                    return;
+                }
+                
+                jsonData.splice(index, 1);
+                fs.writeFileSync('./db.json', JSON.stringify(jsonData, null, 2));
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ message: 'Product deleted successfully' }));
+            }
+            else {
+                res.writeHead(404, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ message: 'Not Found' }));
+            }
+        } catch (error) {
+            console.error(error);
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ message: 'Internal Server Error' }));
+        }
+    };
 
-    // Serve the products as JSON
-    else if (parsedUrl.pathname === '/products' && method === 'GET') {
-        const products = getProducts();
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(products));
-    }
-
-    // Add a new product (POST /add-product)
-    else if (parsedUrl.pathname === '/add-product' && method === 'POST') {
-        let body = '';
-        req.on('data', chunk => { body += chunk; });
-        req.on('end', () => {
-            const product = JSON.parse(body);
-            const products = getProducts();
-            // Assign a new id based on the last product's id
-            product.id = (parseInt(products[products.length - 1]?.id || 0) + 1).toString();
-            products.push(product);
-            saveProducts(products);
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ message: 'Product added successfully' }));
-        });
-    }
-
-    // Edit a product (POST /edit-product)
-    else if (parsedUrl.pathname === '/edit-product' && method === 'POST') {
-        let body = '';
-        req.on('data', chunk => { body += chunk; });
-        req.on('end', () => {
-            const updatedProduct = JSON.parse(body);
-            let products = getProducts();
-            products = products.map(product => 
-                product.id === updatedProduct.id ? updatedProduct : product
-            );
-            saveProducts(products);
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ message: 'Product updated successfully' }));
-        });
-    }
-
-    // Delete a product (DELETE /delete-product?id=)
-    else if (parsedUrl.pathname === '/delete-product' && method === 'DELETE') {
-        const productId = parsedUrl.query.id;
-        let products = getProducts();
-        products = products.filter(product => product.id !== productId);
-        saveProducts(products);
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ message: 'Product deleted successfully' }));
-    }
+    handleRequest().catch(error => {
+        console.error(error);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Internal Server Error' }));
+    });
 });
 
-// Listen on port 3000
-server.listen(3000, () => {
-    console.log('Server running on port 3000');
+const PORT = 3000;
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "003",
+    "name": "Ergonomic Office Chair",
+    "description": "An ergonomic office chair with adjustable height and lumbar support.",
+    "price": 199.99,
+    "category": "Furniture",
+    "stock": 20
+  },
+  {
+    "id": "004",
+    "name": "Yoga Mat",
+    "description": "A non-slip yoga mat with extra cushioning for comfort.",
+    "price": 24.99,
+    "category": "Fitness",
+    "stock": 100
+  },
+  {
+    "id": "005",
+    "name": "Stainless Steel Water Bottle",
+    "description": "A durable stainless steel water bottle with a leak-proof cap.",
+    "price": 15.99,
+    "category": "Home & Kitchen",
+    "stock": 200
+  },
+  {
+    "id": "006",
+    "name": "Laptop Stand",
+    "description": "A foldable and adjustable laptop stand for better ergonomics.",
+    "price": 39.99,
+    "category": "Electronics",
+    "stock": 50
+  },
+  {
+    "id": "007",
+    "name": "Smartphone Tripod",
+    "description": "A lightweight tripod for smartphones with flexible legs.",
+    "price": 19.99,
+    "category": "Photography",
+    "stock": 120
+  },
+  {
+    "id": "008",
+    "name": "Gaming Keyboard",
+    "description": "A mechanical gaming keyboard with customizable RGB lighting.",
+    "price": 59.99,
+    "category": "Electronics",
+    "stock": 80
+  },
+  {
+    "id": "009",
+    "name": "Portable Power Bank",
+    "description": "A high-capacity portable power bank for charging devices on the go.",
+    "price": 25.99,
+    "category": "Electronics",
+    "stock": 200
+  }
+]
